@@ -27,6 +27,7 @@ class TerminalViewModel : ViewModel() {
     private fun loadBarList() {
         viewModelScope.launch(exceptionHandler) {
             val barList = apiService.loadBars().barLists
+            Log.d("AAA", "Size: ${barList.size} body: ${barList.toString()}")
             _state.value = TerminalScreenState.Content(barList = barList)
         }
     }
