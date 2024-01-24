@@ -4,7 +4,7 @@ package ru.com.bulat.termonalstockscompose.data
 import android.os.Parcelable
 import androidx.compose.runtime.Immutable
 import com.google.gson.annotations.SerializedName
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 import java.util.Calendar
 import java.util.Date
 
