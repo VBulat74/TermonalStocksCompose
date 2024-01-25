@@ -11,6 +11,7 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
             TermonalStocksComposeTheme {
                 val viewModel: TerminalViewModel = viewModel()
                 val screenState = viewModel.state.collectAsState()
