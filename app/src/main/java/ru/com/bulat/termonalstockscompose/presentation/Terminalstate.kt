@@ -14,17 +14,26 @@ data class TerminalState(
     val barList : List<Bar>,
     val visibleBarsCount : Int = 100,
     val terminalWith : Float = 1f,
+    val terminalHeight : Float = 1f,
     val scrolledBy : Float = 1f,
 ) : Parcelable {
     val barWidth : Float
         get() = terminalWith / visibleBarsCount
 
-    val visibleBars : List<Bar>
+    private val visibleBars : List<Bar>
         get() {
             val indexStart = (scrolledBy / barWidth).roundToInt().coerceAtLeast(0)
             val endIndex = (indexStart + visibleBarsCount).coerceAtMost(barList.size)
             return barList.subList(indexStart, endIndex)
         }
+
+    val max : Float
+        get() = visibleBars.maxOf { it.high }
+    val min : Float
+        get() = visibleBars.minOf { it.low }
+
+    val pxPerPoint : Float
+        get() = terminalHeight / (max - min)
 }
 
 @Composable
